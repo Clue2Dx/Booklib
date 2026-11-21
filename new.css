@@ -44,3 +44,5 @@ label{display:block;font-size:13px;color:var(--mute);margin:10px 0}label>*{margi
 #nc{flex:1;border:0;background:none;resize:none;padding:0;font-size:17px;line-height:1.9;outline:0;text-align:right}
 #toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:99px;font-size:13px;z-index:40}
 #login{max-width:340px;margin:16vh auto;padding:0 20px}#login input{margin:6px 0}#err{color:var(--danger);font-size:14px}
+.yr button,.nb button{direction:ltr}
+
