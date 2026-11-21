@@ -13,4 +13,6 @@
 <script src="app1.js"></script>
 <script src="ui.js"></script>
 <script>document.addEventListener('click',function(e){var a=e.target.closest('a[href="../"]');if(a){e.preventDefault();location.href='classic.html'}},true)</script>
+<script>new MutationObserver(function(){document.querySelectorAll('#app .p').forEach(function(p){if(p.textContent.trim()=='متوقف')p.classList.add('stop')})}).observe(document.getElementById('app'),{childList:true,subtree:true})</script>
+
 </body></html>
