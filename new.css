@@ -45,4 +45,8 @@ label{display:block;font-size:13px;color:var(--mute);margin:10px 0}label>*{margi
 #toast{position:fixed;left:50%;bottom:calc(100px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:99px;font-size:13px;z-index:40}
 #login{max-width:340px;margin:16vh auto;padding:0 20px}#login input{margin:6px 0}#err{color:var(--danger);font-size:14px}
 .yr button,.nb button{direction:ltr}
+.p.stop{background:#f3e3e0;color:#a8453a}
+:root[data-theme=dark] .p.stop{background:#3a2321;color:#e0907f}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) .p.stop{background:#3a2321;color:#e0907f}}
+
 
