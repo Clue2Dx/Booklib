@@ -9,6 +9,7 @@ document.head.insertAdjacentHTML('beforeend',`<style>
 .tools{display:flex;gap:8px;margin:8px 0 2px}.tools .ghost{font-size:14px;padding:6px 12px}
 .pr{color:var(--danger);font-weight:700;margin-inline-start:6px}
 .pill.stopped{background:none;border:1px dashed var(--mute);color:var(--mute)}
+.yy{direction:ltr;font-variant-numeric:tabular-nums}
 </style>`);
 SL.stopped='Stopped';
 const applyTheme=t=>{document.documentElement.dataset.theme=t;const b=$('#thm');if(b)b.textContent=t=='dark'?'Light mode':'Dark mode'};
@@ -36,8 +37,13 @@ let PRV=null;
 document.addEventListener('click',e=>{if(e.target.closest('[data-act="save-book"]')){const s=$('#f_pr');PRV=s?+s.value:null}},true);
 const _sv=save;save=function(t,row){if(t=='books'&&PRV!==null)row.priority=PRV;return _sv(t,row)};
 document.addEventListener('click',()=>{PRV=null});
-const _r2=render;render=function(){_r2();document.querySelectorAll('#main [data-act="book"]').forEach(el=>{const b=bookById(el.dataset.id),p=(b&&b.priority)||0,t=el.querySelector('.t');if(p&&t&&!t.querySelector('.pr'))t.insertAdjacentHTML('beforeend',`<span class="pr">${'!'.repeat(p)}</span>`)})};
-document.addEventListener('click',e=>{const el=e.target.closest('[data-act]');if(!el)return;const a=el.dataset.act;
- if(a=='hs'){V.hs=el.dataset.v;V.lt=V.hs=='want'?'want':'plan';render()}
- else if(a=='other'){$('#side').hidden=true;sheet(`<h2>Other</h2><button class="ghost" style="width:100%;margin:6px 0" data-act="bulk">Add many books</button><button class="ghost" style="width:100%;margin:6px 0" data-act="export">Export backup</button><button class="ghost" style="width:100%;margin:6px 0" data-act="import">Import backup</button><div class="bar"><button class="pri" data-act="close">Done</button></div>`)}
- else if(a=='theme'){const t=document.documentElement.dataset.theme=='dark'?'light':'dark';try{localStorage.setItem('theme',t)}catch(e){}applyTheme(t)}});
+const NUMQ='#f_p,#f_y,[data-f="year"]';
+const fixNum=()=>document.querySelectorAll(NUMQ).forEach(i=>{if(i.type!='text')i.type='text';i.setAttribute('inputmode','numeric');i.setAttribute('pattern','[0-9]*');i.setAttribute('lang','en');i.setAttribute('dir','ltr')});
+new MutationObserver(fixNum).observe($('#sheet'),{childList:true,subtree:true});
+document.addEventListener('input',e=>{const t=e.target;if(!t.matches||!t.matches(NUMQ))return;
+ const v=t.value.replace(/[٠-٩]/g,d=>d.charCodeAt(0)-1632).replace(/[۰-۹]/g,d=>d.charCodeAt(0)-1776).replace(/\D/g,'');if(v!=t.value)t.value=v});
+const _r2=render;render=function(){_r2();document.querySelectorAll('#main [data-act="book"]').forEach(el=>{const id=el.dataset.id,b=bookById(id),p=(b&&b.priority)||0,t=el.querySelector('.t');
+ if(p&&t&&!t.querySelector('.pr'))t.insertAdjacentHTML('beforeend',`<span class="pr">${'!'.repeat(p)}</span>`);
+ const m=el.querySelector('.m');if(m&&!m.querySelector('.yy')){const d=el.closest('details');let y;
+  if(d){y=parseInt(d.querySelector('summary').textContent);if(isNaN(y))y=null}else if(V.view=='lib'&&V.hs=='plan')y=V.year;else y=(bestRec(id)||{}).year;
+  if(y)m.insertAdjacentHTML('beforeend',`<span class="yy">${y}
