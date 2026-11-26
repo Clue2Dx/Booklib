@@ -1,18 +1,9 @@
-<!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="مكتبتي"><meta name="theme-color" content="#f6f5f1">
-<link rel="manifest" href="manifest.webmanifest">
-<title>مكتبتي</title>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="new.css"></head><body>
-<div id="login" hidden><h1>مكتبتي</h1><form id="lf"><input id="em" type="email" placeholder="البريد الإلكتروني" autocomplete="username" dir="ltr" required><input id="pw" type="password" placeholder="كلمة المرور" autocomplete="current-password" dir="ltr" required><p id="err"></p><button class="pri" style="width:100%">دخول</button></form></div>
-<main id="app" hidden></main><nav id="tb" hidden></nav><button id="fab" hidden data-a="add" aria-label="إضافة">+</button>
-<div id="sheet" hidden></div><div id="npage" hidden></div><div id="toast" hidden></div><div id="stat" hidden></div>
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
-<script src="app1.js"></script>
-<script src="ui.js"></script>
-<script>document.addEventListener('click',function(e){var a=e.target.closest('a[href="../"]');if(a){e.preventDefault();location.href='classic.html'}},true)</script>
-<script>new MutationObserver(function(){document.querySelectorAll('#app .p').forEach(function(p){if(p.textContent.trim()=='متوقف')p.classList.add('stop')})}).observe(document.getElementById('app'),{childList:true,subtree:true})</script>
-
-</body></html>
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>MRCP Prep</title>
+<link rel="preconnect" href="https://eflcriluivodietplgqn.supabase.co" crossorigin><link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="manifest" href="manifest.webmanifest"><link rel="apple-touch-icon" href="icon.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#ffffff"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<script>(function(){try{var t=JSON.parse(localStorage.getItem("theme2"))||"auto",d=t==="dark"||(t==="auto"&&matchMedia("(prefers-color-scheme: dark)").matches),c=d?"#0b0b0d":"#ffffff";document.documentElement.style.background=c;document.querySelector("meta[name=theme-color]").content=c}catch(e){}})()</script><link rel="stylesheet" href="style.css"></head>
+<body><script>(function(){var err='';addEventListener('error',function(e){err=e.message||'error'});addEventListener('unhandledrejection',function(e){err=(e.reason&&e.reason.message)||String(e.reason)});
+window.__reset=function(){var p=[];if(navigator.serviceWorker)p.push(navigator.serviceWorker.getRegistrations().then(function(r){return Promise.all(r.map(function(x){return x.unregister()}))}));if(window.caches)p.push(caches.keys().then(function(k){return Promise.all(k.filter(function(x){return x.indexOf('mrcp')===0&&x!=='mrcp-img-v1'}).map(function(x){return caches.delete(x)}))}));Promise.all(p).then(function(){location.reload()},function(){location.reload()})};
+setTimeout(function(){var a=document.getElementById('app');if(a&&a.querySelector('.splash'))a.innerHTML='<div style="max-width:380px;margin:12vh auto;padding:0 20px;text-align:center;font-family:-apple-system,sans-serif"><h2>MRCP Prep</h2><p style="color:#888;font-size:14px">'+(err?String(err).replace(/[<>&]/g,''):'Loading is taking too long')+'</p><button onclick="__reset()" style="padding:14px 22px;border:0;border-radius:14px;background:#6d4aff;color:#fff;font-size:16px;font-weight:600">إعادة تحميل التطبيق / Reload app</button></div>'},10000)})()</script>
+<div id=nav></div><main id=app><div class=splash>MRCP <b>Prep</b></div></main><div id=abar></div><div id=sheet></div><div id=modal></div><div id=toast></div>
+<script defer src="config.js"></script><script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script><script defer src="demo.js"></script><script defer src="app.js?v=16"></script></body></html>
